@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class trafficlightctrl : MonoBehaviour
 {
+    public trafficcarscript car;
     public SpriteRenderer trafficlight;
     SpriteRenderer sr;
     public UnityEvent Onleftclick;
@@ -41,11 +42,13 @@ public class trafficlightctrl : MonoBehaviour
     {
         Debug.Log("go!");
         trafficlight.color = Color.green;
+        car.Xspeed = 5f;
     }
 
     public void stop()
     {
         Debug.Log("stop!");
         trafficlight.color = Color.red;
+        car.Xspeed = 0f;
     }
 }
