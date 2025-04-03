@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class playermove : MonoBehaviour
 {
+    SpriteRenderer sr;
+    Animator anim;
     public Tilemap tm;
     public Tile grass;
     public Tile stone;
@@ -13,6 +15,7 @@ public class playermove : MonoBehaviour
     public List<Transform> waypoint;
     public AnimationCurve curve;
     public bool move = false;
+    public bool isrunning = false;
     int currentwaypoint;
     int nextwaypoint;
     [Range(0, 1)]
@@ -20,11 +23,15 @@ public class playermove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -46,10 +53,12 @@ public class playermove : MonoBehaviour
         if (waypoint.Count > 0 && move)
         {
             movment();
+            anim.SetFloat("cornermovemnet", 1);
+
         }
         else
         {
-
+            anim.SetFloat("cornermovemnet", 0);
         }
 
 
@@ -65,10 +74,10 @@ public class playermove : MonoBehaviour
             t = 0;
             currentwaypoint = nextwaypoint;//update currentpoint and next point
             nextwaypoint = waypoint.Count-1;
-
         }
-
         pos = Vector2.Lerp(waypoint[currentwaypoint].position, waypoint[nextwaypoint].position, curve.Evaluate(t));
         transform.position = pos;
+        
+
     }
 }
