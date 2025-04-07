@@ -18,7 +18,7 @@ public class bridSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        goaway();
     }
 
     public IEnumerator spawnit()
@@ -34,6 +34,21 @@ public class bridSpawnerScript : MonoBehaviour
             birds.Add(newbirds);
             //wait for 3 sec till next spawn
             yield return new WaitForSeconds(3);
+        }
+    }
+
+    public void goaway()
+    {
+        for(int i= birds.Count-1; i >= 0; i--)
+        {
+            birdmovement bm = birds[i].GetComponent<birdmovement>();
+            bm.spawner = this;
+            if (bm.outside)
+            {
+                Destroy(birds[i]);
+                birds.Remove(birds[i]);
+            }
+            
         }
     }
 }
