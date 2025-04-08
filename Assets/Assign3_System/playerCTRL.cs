@@ -6,11 +6,14 @@ public class playerCTRL : MonoBehaviour
 {
     //this script is for the player control//
     //player moves with WASD or arrowkeys and constrain within a fixed size of map//
+    public birdmovement bm;
     SpriteRenderer sr;
     float speed = 5f;
     // Start is called before the first frame update
     void Start()
     {
+        //register so bird prefab can get position of player
+        bm.player = this;
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -28,7 +31,7 @@ public class playerCTRL : MonoBehaviour
         float direction = Input.GetAxis("Horizontal");
         //get vertical input
         float direction2 = Input.GetAxis("Vertical");
-        //flip sprite base on dir
+        //flip sprite if dir is negative, in other words, facing left
         sr.flipX = direction < 0;
         //move player base on input with fixed speed
         transform.position += transform.right * direction * speed * Time.deltaTime;
