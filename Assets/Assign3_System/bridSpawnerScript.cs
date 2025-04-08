@@ -7,6 +7,7 @@ public class bridSpawnerScript : MonoBehaviour
     //this script is to spawn birds using coroutine with countdown timer
     public GameObject prefabs;
     public List<GameObject> birds;
+    public coinscript coinmanager;
     Vector2 pos;
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,16 @@ public class bridSpawnerScript : MonoBehaviour
             GameObject newbirds = Instantiate(prefabs, pos, Quaternion.identity);
             //add to list
             birds.Add(newbirds);
+            //get the bird script so i have access to the catchbird event
+            birdmovement bm = newbirds.GetComponent<birdmovement>();
+            //add add coin function from coinmanager script when catchbird event triggers
+            bm.CatchBird.AddListener(coinmanager.addbasecoin);
+            bm.CatchBird.AddListener(coinmanager.addcatch);
+            
+            if (coinmanager.totalcaught >= 3)
+            {
+                bm.alert();
+            }
             //wait for 3 sec till next spawn
             yield return new WaitForSeconds(3);
         }
@@ -51,4 +62,5 @@ public class bridSpawnerScript : MonoBehaviour
             
         }
     }
+
 }

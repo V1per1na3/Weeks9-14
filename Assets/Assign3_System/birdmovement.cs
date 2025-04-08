@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TreeEditor;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class birdmovement : MonoBehaviour
@@ -19,7 +20,8 @@ public class birdmovement : MonoBehaviour
     public bool outside = false;
     public bridSpawnerScript spawner;
     float distance;
-    float maxdis = 5f;
+    public float maxdis = 3f;
+    public UnityEvent CatchBird;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,7 @@ public class birdmovement : MonoBehaviour
         //calculate the distance between the two
         distance = Vector2.Distance(transform.position, player.transform.position);
         //check if they are close enough
-        //Debug.Log(distance);
+        
         if (distance< maxdis)
         {
             closeenough = true;//it will never need to return false so bird keeps flying away
@@ -51,6 +53,8 @@ public class birdmovement : MonoBehaviour
         {
             movement();
         }
+        gotcaught();
+        Debug.Log(maxdis);
     }
 
     void movement()
@@ -77,6 +81,24 @@ public class birdmovement : MonoBehaviour
         {
             outside = false;
         }
+    }
+
+    public void gotcaught()
+    {
+        if (sr.bounds.Contains(player.transform.position))
+        {
+            CatchBird.Invoke();
+            //destory this current gameobject
+            Destroy(gameObject);
+            //find it from the list in spawner script and remove it
+            spawner.birds.Remove(gameObject);
+        }
+    }
+
+    public void alert()
+    {
+        speed = 5f;
+        Debug.Log("activated");
     }
 
 }
