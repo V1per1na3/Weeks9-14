@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using static Cinemachine.CinemachineBrain;
 
 public class coinscript : MonoBehaviour
 {
+    public UnityEvent RainEvent;
     public Button rain;
     public TextMeshProUGUI coin;
-    public float coinvalue = 0f;
+    public float coinvalue = 5f;
     public float totalcaught = 0f;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class coinscript : MonoBehaviour
 
     public void purchaserain()
     {
+        RainEvent.Invoke();
         coinvalue -= 5;
         coin.text = coinvalue.ToString();
     }

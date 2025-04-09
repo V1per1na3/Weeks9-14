@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
@@ -12,6 +13,8 @@ public class playerCTRL : MonoBehaviour
     //player moves with WASD or arrowkeys and constrain within a fixed size of map//
     //player can press space bar to dash
     //theres cd for dash
+    public CinemachineVirtualCamera cam;
+    public Transform player;
     public birdmovement bm;
     SpriteRenderer sr;
     float speed = 5f;
@@ -22,6 +25,7 @@ public class playerCTRL : MonoBehaviour
     float cooldowntime = 1f;
     bool candash=true;
     public Slider timerui;
+    public bool reset = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -128,4 +132,12 @@ public class playerCTRL : MonoBehaviour
         transform.position = pos;
 
     }
+
+    public void resetpos()
+    {
+        cam.Follow = null;
+        transform.position = Vector2.zero;
+        cam.Follow = player;
+    }
+
 }
