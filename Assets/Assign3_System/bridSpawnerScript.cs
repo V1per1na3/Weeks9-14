@@ -8,6 +8,7 @@ public class bridSpawnerScript : MonoBehaviour
     public GameObject prefabs;
     public List<GameObject> birds;
     public coinscript coinmanager;
+    public caughteffect ce;
     Vector2 pos;
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class bridSpawnerScript : MonoBehaviour
             //add add coin function from coinmanager script when catchbird event triggers
             bm.CatchBird.AddListener(coinmanager.addbasecoin);
             bm.CatchBird.AddListener(coinmanager.addcatch);
+            bm.CatchBird.AddListener(ce.starteffect);
             
             if (coinmanager.totalcaught >= 3)
             {
