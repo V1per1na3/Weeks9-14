@@ -15,7 +15,7 @@ public class playerCTRL : MonoBehaviour
     public birdmovement bm;
     SpriteRenderer sr;
     float speed = 5f;
-    float dashdis = 1f;
+    float dashdis = 1.5f;
     float directionx;
     float directiony;
     float dashcooldowntimer=0;

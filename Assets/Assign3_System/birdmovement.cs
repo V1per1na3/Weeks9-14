@@ -21,7 +21,7 @@ public class birdmovement : MonoBehaviour
     public bool outside = false;
     public bridSpawnerScript spawner;
     float distance;
-    public float maxdis = 4.5f;
+    public float maxdis = 5f;
     public UnityEvent CatchBird;
     // Start is called before the first frame update
     void Start()
