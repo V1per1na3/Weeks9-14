@@ -37,7 +37,7 @@ public class coinscript : MonoBehaviour
     public void addcatch()
     {
         totalcaught++;
-        Debug.Log("caught" + totalcaught);
+        //Debug.Log("caught" + totalcaught);
     }
 
 }

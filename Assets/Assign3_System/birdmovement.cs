@@ -5,6 +5,7 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using static UnityEditor.PlayerSettings;
 
 public class birdmovement : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class birdmovement : MonoBehaviour
     public bool outside = false;
     public bridSpawnerScript spawner;
     float distance;
-    public float maxdis = 3f;
+    public float maxdis = 4.5f;
     public UnityEvent CatchBird;
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class birdmovement : MonoBehaviour
             movement();
         }
         gotcaught();
-        Debug.Log(maxdis);
+        //Debug.Log(maxdis);
     }
 
     void movement()
@@ -85,8 +86,11 @@ public class birdmovement : MonoBehaviour
 
     public void gotcaught()
     {
+        //check if bird gotcaught
+        //if the bird overlap with player
         if (sr.bounds.Contains(player.transform.position))
         {
+            //bird got caught! trigger catchbird event
             CatchBird.Invoke();
             //destory this current gameobject
             Destroy(gameObject);
@@ -97,8 +101,9 @@ public class birdmovement : MonoBehaviour
 
     public void alert()
     {
-        speed = 5f;
-        Debug.Log("activated");
+        //this function get call in spawner script so each bird is alert after certain amount of bird got caught in total
+        speed = 5f;//assign a faster speed
+        //Debug.Log("activated");
     }
 
 }
