@@ -29,7 +29,7 @@ public class bridSpawnerScript : MonoBehaviour
         while (birds.Count < 5)
         {
             //generate random position and I just happend to know this is the size of my map...
-            pos = new Vector2(Random.Range(-16f, 16f), Random.Range(-12f, 12f));
+            pos = new Vector2(Random.Range(-15f, 15f), Random.Range(-9f, 9f));
             //instantiate birds at random position in the map
             GameObject newbirds = Instantiate(prefabs, pos, Quaternion.identity);
             //add to list
@@ -46,7 +46,7 @@ public class bridSpawnerScript : MonoBehaviour
                 bm.alert();
             }
             //wait for 3 sec till next spawn
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
         }
     }
 

@@ -24,7 +24,7 @@ public class camerafollow : MonoBehaviour
             followpos.x = realplayer.position.x;
         }
         //only update this follow item's transform.y when player.y is within certain range
-        if (realplayer.transform.position.y > -8f && realplayer.transform.position.y < 8f)
+        if (realplayer.transform.position.y > -6f && realplayer.transform.position.y < 6f)
         {
             followpos.y = realplayer.position.y;
         }
