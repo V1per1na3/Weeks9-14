@@ -15,7 +15,7 @@ public class birdmovement : MonoBehaviour
     SpriteRenderer sr;
     public playerCTRL player;
     public bool closeenough = false;
-    float speed = 3f;
+    float speed = 2.5f;
     float t;
     float yoffset;
     public bool outside = false;
@@ -102,7 +102,7 @@ public class birdmovement : MonoBehaviour
     public void alert()
     {
         //this function get call in spawner script so each bird is alert after certain amount of bird got caught in total
-        speed = 5f;//assign a faster speed
+        speed = 4.5f;//assign a faster speed
         //Debug.Log("activated");
     }
 

@@ -9074,8 +9074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea365d94a2f0761438c947e4b07ff4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 220282527}
-  player: {fileID: 1377453455}
   bm: {fileID: 6803892783556270516, guid: 2a25f4604d9fcdb4289052ff33c7c7ed, type: 3}
   timerui: {fileID: 2071711842}
   reset: 1
@@ -14035,7 +14033,7 @@ MonoBehaviour:
       m_Calls: []
   rain: {fileID: 1175678136}
   coin: {fileID: 1758561786}
-  coinvalue: 15
+  coinvalue: 0
   totalcaught: 0
 --- !u!114 &762339707
 MonoBehaviour:

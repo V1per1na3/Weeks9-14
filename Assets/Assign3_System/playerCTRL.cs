@@ -13,8 +13,6 @@ public class playerCTRL : MonoBehaviour
     //player moves with WASD or arrowkeys and constrain within a fixed size of map//
     //player can press space bar to dash
     //theres cd for dash
-    public CinemachineVirtualCamera cam;
-    public Transform player;
     public birdmovement bm;
     SpriteRenderer sr;
     float speed = 5f;
@@ -135,9 +133,9 @@ public class playerCTRL : MonoBehaviour
 
     public void resetpos()
     {
-        cam.Follow = null;
+        //this gets call when rain event triggers
+        //reset player position back to beginning so player can watch what happen to pumpkin when rain
         transform.position = Vector2.zero;
-        cam.Follow = player;
     }
 
 }
