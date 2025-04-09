@@ -9,19 +9,20 @@ public class bridSpawnerScript : MonoBehaviour
     public List<GameObject> birds;
     public coinscript coinmanager;
     public caughteffect ce;
+    public Coroutine birdspawning;
     Vector2 pos;
     // Start is called before the first frame update
     void Start()
     {
         birds = new List<GameObject>();
-        StartCoroutine(spawnit());
+        birdspawning = StartCoroutine(spawnit());
     }
 
     // Update is called once per frame
     void Update()
     {
         goaway();
-    }
+    } 
 
     public IEnumerator spawnit()
     {
@@ -64,5 +65,18 @@ public class bridSpawnerScript : MonoBehaviour
             
         }
     }
+
+    //public void stopspawn()
+    //{
+    //    if (birdspawning != null)
+    //    {
+    //        StopCoroutine(birdspawning);
+    //        for (int i = birds.Count - 1; i >= 0; i--)
+    //        {
+    //             Destroy(birds[i]);
+    //             birds.Remove(birds[i]);
+    //        }
+    //    }
+    //}
 
 }

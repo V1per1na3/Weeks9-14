@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class pumpkingrower : MonoBehaviour
 {
+    public bridSpawnerScript bs;
+    public UnityEvent winevent;
     public playerCTRL pc;
     public coinscript cc;
     public AnimationCurve c1;
@@ -20,6 +23,12 @@ public class pumpkingrower : MonoBehaviour
             cc.RainEvent.AddListener(changestage);
             cc.RainEvent.AddListener(pc.resetpos);
         }
+        //winevent.AddListener(bs.stopspawn);
+    }
+    void Update()
+    {
+        Debug.Log(stage);
+        checkstage();
     }
 
     public void grow()
@@ -55,4 +64,12 @@ public class pumpkingrower : MonoBehaviour
         Debug.Log(stage);
     }
     
+    public void checkstage()
+    {
+        if (stage == 3)
+        {
+            winevent.Invoke();
+
+        }
+    }
 }
