@@ -13,6 +13,7 @@ public class playerCTRL : MonoBehaviour
     //player moves with WASD or arrowkeys and constrain within a fixed size of map//
     //player can press space bar to dash
     //theres cd for dash
+    Animator anim;
     public birdmovement bm;
     SpriteRenderer sr;
     float speed = 5f;
@@ -27,6 +28,7 @@ public class playerCTRL : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         //register so bird prefab can get position of player
         bm.player = this;
         sr = GetComponent<SpriteRenderer>();
@@ -53,6 +55,9 @@ public class playerCTRL : MonoBehaviour
         directiony = Input.GetAxis("Vertical");
         //flip sprite if dir is negative, in other words, facing left
         sr.flipX = directionx < 0;
+        //play walk anim
+        anim.SetFloat("walk", Mathf.Abs(directionx));
+        anim.SetFloat("walkup", Mathf.Abs(directiony));
         //move player base on input with fixed speed
         transform.position += transform.right * directionx * speed * Time.deltaTime;
         transform.position += transform.up * directiony * speed * Time.deltaTime;
